@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page Replacement Simulator</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Project Title -->
+    <header class="title-section">
+      <h1>Page Replacement Algorithm Simulator</h1>
+      <p class="subtitle">Operating Systems Mini Project &mdash; FIFO, LRU &amp; Optimal</p>
+    </header>
+
+    <!-- Input Card -->
+    <section class="card input-card">
+      <h2>Simulation Input</h2>
+
+      <div class="form-group">
+        <label for="frames">Number of Frames</label>
+        <input type="number" id="frames" min="1" placeholder="e.g. 3">
+      </div>
+
+      <div class="form-group">
+        <label for="referenceString">Reference String (space separated)</label>
+        <input type="text" id="referenceString" placeholder="e.g. 7 0 1 2 0 3 0 4 2 3 0 3 2">
+      </div>
+
+      <div class="form-group">
+        <label for="algorithm">Algorithm</label>
+        <select id="algorithm">
+          <option value="fifo">FIFO (First In First Out)</option>
+          <option value="lru">LRU (Least Recently Used)</option>
+          <option value="optimal">Optimal Page Replacement</option>
+        </select>
+        <p id="algoDescription" class="algo-description"></p>
+      </div>
+
+      <div class="button-row">
+        <button id="startBtn" class="btn btn-primary">Start Simulation</button>
+        <button id="sampleBtn" class="btn btn-secondary">Sample Input</button>
+        <button id="resetBtn" class="btn btn-danger">Reset</button>
+      </div>
+
+      <p id="errorMessage" class="error-message"></p>
+    </section>
+
+    <!-- Loading Spinner -->
+    <div id="loadingSpinner" class="loading-spinner hidden">
+      <div class="spinner"></div>
+      <p>Running simulation...</p>
+    </div>
+
+    <!-- Results Card -->
+    <section id="resultsCard" class="card results-card hidden">
+      <h2>Simulation Results</h2>
+
+      <div class="stats-grid">
+        <div class="stat-box faults">
+          <span class="stat-value" id="totalFaults">0</span>
+          <span class="stat-label">Page Faults</span>
+        </div>
+        <div class="stat-box hits">
+          <span class="stat-value" id="totalHits">0</span>
+          <span class="stat-label">Page Hits</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-value" id="hitRatio">0%</span>
+          <span class="stat-label">Hit Ratio</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-value" id="faultRatio">0%</span>
+          <span class="stat-label">Fault Ratio</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-value" id="execTime">0 ms</span>
+          <span class="stat-label">Execution Time</span>
+        </div>
+      </div>
+
+      <div class="table-wrapper">
+        <table id="simulationTable">
+          <thead>
+            <tr id="tableHeaderRow">
+              <!-- Filled dynamically by JS -->
+            </tr>
+          </thead>
+          <tbody id="tableBody">
+            <!-- Filled dynamically by JS -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </div>
+
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

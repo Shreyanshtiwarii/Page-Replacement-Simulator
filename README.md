@@ -139,6 +139,26 @@ these values.
 
 ---
 
+## Deploying to Render
+
+1. Push this project folder to a GitHub repository.
+2. Go to [render.com](https://render.com) and log in / sign up.
+3. Click **New +** → **Web Service**, then connect your GitHub repo.
+4. Configure the service:
+   - **Environment:** Python 3
+   - **Build Command:** `pip install -r requirements.txt`
+   - **Start Command:** `gunicorn app:app`
+   - **Instance Type:** Free (fine for a college project)
+5. If Render picks the wrong Python version, add an environment variable:
+   - **Key:** `PYTHON_VERSION`
+   - **Value:** `3.11.9`
+6. Click **Create Web Service**. Render will build and deploy automatically.
+7. Once live, your simulator will be available at the `https://your-app-name.onrender.com` URL Render gives you.
+
+The project already includes a `Procfile` (`web: gunicorn app:app`) and `gunicorn` in `requirements.txt`, so no extra setup is needed — just push and connect the repo.
+
+---
+
 ## Notes
 
 - This project does not use any database — all computation happens in

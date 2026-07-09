@@ -168,3 +168,4 @@ The project already includes a `Procfile` (`web: gunicorn app:app`) and `gunicor
   contains valid numbers.
 - The project is intentionally kept simple and well-commented so it is
   easy to understand and present for an Operating Systems mini project.
+# PageReplacementSimulator
